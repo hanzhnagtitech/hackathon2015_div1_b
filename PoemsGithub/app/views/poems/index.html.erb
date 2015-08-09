@@ -12,8 +12,8 @@
         <tr>
           <td><a href="?genre_id=<%= poem.genre.id %>"><%= poem.genre.name %></a></td>
           <td><a href="/<%= poem.id %>"><%= poem.title %></a></td>
-          <td>1</td>
-          <td>1</td>
+          <td><%= poem.stars.count %></td>
+          <td><%= @poems.where(:title => poem.title).count %></td>
       <% end %>
       </tbody>
   </table>
