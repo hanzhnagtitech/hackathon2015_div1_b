@@ -1,11 +1,23 @@
 class PoemsController < ApplicationController
 
   def new
+    @is_edit = params[:is_edit].to_s
+    @old_poem = Poem.where(:id => params[:poem_id], :is_active => true).first
     @poem = Poem.new
+    @genres = Genre.where('id > 0')
   end
 
   def create
-    @poem = Poem.new( {:title => params[:poem][:title], :content => params[:poem][:content]} )
+    @poem = Poem.new( {
+      :title => params[:poem][:title],
+      :content => params[:poem][:content],
+      :genre_id => params[:poem][:genre_id],
+      :user_id => params[:poem][:user_id],
+      :owner_id => params[:poem][:owner_id],
+      :is_wait => params[:poem][:is_wait],
+      :is_active => params[:poem][:is_active],
+      :is_selected => params[:poem][:is_selected]
+    } )
     @poem.save
   end
 
@@ -19,6 +31,11 @@ class PoemsController < ApplicationController
 
   def show
     @poem = Poem.where(:id => params[:id]).first
+    @poem_logs = Poem.where(:title => @poem.title)
+    @versions = @poem_logs.order("created_at desc").pluck(:created_at)
+    if params[:created_at]
+      @poem = @poem_logs.where(:created_at => params[:created_at]).first
+    end
   end
 
   def merge

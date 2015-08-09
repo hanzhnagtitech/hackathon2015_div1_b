@@ -1,14 +1,16 @@
 <h1>Poem#show</h1>
-<<<<<<< HEAD
+
+<%= form_tag('/', :method => :get) do %>
+  <%= select_tag(:created_at, options_for_select(@versions, :selected => params[:created_at])) %>
+  <%= submit_tag '表示', {:name => nil } %>
+<% end %>
+
 <p>Title:<%= @poem.title %></p>
 <p>Content:<%= @poem.content %></p>
 <p>owner:<%= @poem.owner_id %></p>
-<p>genre:<%= @poem.genre_id %></p>
-<p><%= button_to "edit", :action => "new" %></p>
+<p>genre:<%= @poem.genre.name %></p>
+<input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
 <p><% if @poem.user_id == @poem.owner_id then %>
 <%= button_to "watch pull request", :action => "merge" %>
 <% end %>
 </p>
-=======
-<p>test</p>
->>>>>>> 6081a2d0a455d66642c999fff017b635ba79bd3b
