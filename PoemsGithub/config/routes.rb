@@ -3,10 +3,19 @@ Rails.application.routes.draw do
   devise_for :users
 #  get 'poems/index'
 
+<<<<<<< HEAD
   get 'poems/(:id)'=>'poems#show'
   resources :poems
 
 #  get 'poems/show'
+=======
+  resources :poems
+
+#  get 'poems/show'
+
+#  get 'poems/new'
+#  post 'poems/new' => 'poems#new'
+>>>>>>> 6081a2d0a455d66642c999fff017b635ba79bd3b
 
 #  get 'poems/new'
 #  post 'poems/new' => 'poems#new'
