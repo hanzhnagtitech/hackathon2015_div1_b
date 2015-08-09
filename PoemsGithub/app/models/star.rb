@@ -1,3 +1,3 @@
 class Star < ActiveRecord::Base
-  belongs_to :poems
+  belongs_to :poem
 end
