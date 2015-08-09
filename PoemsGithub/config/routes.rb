@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get 'poems/index'
+#  get 'poems/index'
 
   get 'poems/(:id)'=>'poems#show'
+  resources :poems
 
-  get 'poems/new'
+#  get 'poems/show'
+
+#  get 'poems/new'
+#  post 'poems/new' => 'poems#new'
 
   get 'poems/merge'
   
