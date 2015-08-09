@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  poems_id: 1
+  users_id: 1
+
+two:
+  poems_id: 1
+  users_id: 1
