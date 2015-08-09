@@ -1,0 +1,19 @@
+  <table>
+      <thead>
+        <tr>
+          <td>ジャンル</td>
+          <td>タイトル</td>
+          <td>スター数</td>
+          <td>コミット数</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% @poems.each do |poem| %>
+        <tr>
+          <td><%= poem.genre.name %></td>
+          <td><%= poem.title %></td>
+          <td>1</td>
+          <td>1</td>
+      <% end %>
+      </tbody>
+  </table>
