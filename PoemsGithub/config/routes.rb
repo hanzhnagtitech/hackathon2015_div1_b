@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 #  get 'poems/new'
 #  post 'poems/new' => 'poems#new'
 
-  get 'poems/merge'
+  get 'poems/(:id)/merge'=>'poems#merge'
+  put :'poems/(:id)/merge', to: 'poems#merge'
 
   root to: "poems#index"
   # The priority is based upon order of creation: first created -> highest priority.

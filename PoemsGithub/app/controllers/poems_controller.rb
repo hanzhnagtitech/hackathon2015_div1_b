@@ -39,5 +39,6 @@ class PoemsController < ApplicationController
   end
 
   def merge
+    @poem = Poem.where(:is_wait => "true")
   end
 end
