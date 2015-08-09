@@ -1,21 +1,26 @@
 <a href="/new">新規作成</a><br><br>
 
-  <table>
-      <thead>
-        <tr>
-          <td>ジャンル</td>
-          <td>タイトル</td>
-          <td>スター数</td>
-          <td>コミット数</td>
-        </tr>
-      </thead>
-      <tbody>
-      <% @poems.each do |poem| %>
-        <tr>
-          <td><a href="?genre_id=<%= poem.genre.id %>"><%= poem.genre.name %></a></td>
-          <td><a href="/<%= poem.id %>"><%= poem.title %></a></td>
-          <td><%= poem.stars.count %></td>
-          <td><%= @poems.where(:title => poem.title).count %></td>
-      <% end %>
-      </tbody>
-  </table>
+<%= form_tag('/', :method => :get) do %>
+  <%= select_tag(:genre_id, options_for_select(@genres, :selected => params[:genre_id])) %>
+  <%= submit_tag '絞り込む', {:name => nil } %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <td>ジャンル</td>
+      <td>タイトル</td>
+      <td>スター数</td>
+      <td>コミット数</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @poems.each do |poem| %>
+    <tr>
+      <td><a href="?genre_id=<%= poem.genre.id %>"><%= poem.genre.name %></a></td>
+      <td><a href="/<%= poem.id %>"><%= poem.title %></a></td>
+      <td><%= poem.stars.count %></td>
+      <td><%= @poems.where(:title => poem.title).count %></td>
+  <% end %>
+  </tbody>
+</table>
