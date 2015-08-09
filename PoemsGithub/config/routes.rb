@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   get 'poems/index'
 
-  get 'poems/show'
+  get 'poems/(:id)'=>'poems#show'
 
   get 'poems/new'
 
+  get 'poems/merge'
+  
   root to: "poems#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

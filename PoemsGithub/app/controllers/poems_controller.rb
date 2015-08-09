@@ -12,5 +12,9 @@ class PoemsController < ApplicationController
   end
 
   def show
+    @poem = Poem.where(:id => params[:id])
+  end
+  
+  def merge
   end
 end
