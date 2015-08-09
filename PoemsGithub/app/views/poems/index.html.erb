@@ -10,7 +10,7 @@
       <tbody>
       <% @poems.each do |poem| %>
         <tr>
-          <td><%= poem.genre.name %></td>
+          <td><%= poem.genre.name unless poem.genre.nil? %></td>
           <td><%= poem.title %></td>
           <td>1</td>
           <td>1</td>

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get 'poems/index'
+#  get 'poems/index'
 
-  get 'poems/show'
+  resources :poems
 
-  get 'poems/new'
+#  get 'poems/show'
+
+#  get 'poems/new'
+#  post 'poems/new' => 'poems#new'
 
   root to: "poems#index"
   # The priority is based upon order of creation: first created -> highest priority.
