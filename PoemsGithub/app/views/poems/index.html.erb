@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<a href="/new">新規作成</a><br><br>
+<a href="/poems/new?is_edit=0">新規作成</a><br><br>
 
 <%= form_tag('/', :method => :get) do %>
   <%= select_tag(:genre_id, options_for_select(@genres, :selected => params[:genre_id])) %>
@@ -21,28 +20,7 @@
       <td><a href="?genre_id=<%= poem.genre.id %>"><%= poem.genre.name %></a></td>
       <td><a href="/poems/<%= poem.id %>"><%= poem.title %></a></td>
       <td><%= poem.stars.count %></td>
-      <td><%= @poems.where(:title => poem.title).count %></td>
+      <td><%= Poem.where(:title => poem.title).count %></td>
   <% end %>
   </tbody>
 </table>
-=======
-  <table>
-      <thead>
-        <tr>
-          <td>ジャンル</td>
-          <td>タイトル</td>
-          <td>スター数</td>
-          <td>コミット数</td>
-        </tr>
-      </thead>
-      <tbody>
-      <% @poems.each do |poem| %>
-        <tr>
-          <td><%= poem.genre.name unless poem.genre.nil? %></td>
-          <td><%= poem.title %></td>
-          <td>1</td>
-          <td>1</td>
-      <% end %>
-      </tbody>
-  </table>
->>>>>>> 6081a2d0a455d66642c999fff017b635ba79bd3b
