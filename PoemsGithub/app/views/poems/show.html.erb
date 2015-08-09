@@ -2,9 +2,9 @@
 <p>Title:<%= @poem.title %></p>
 <p>Content:<%= @poem.content %></p>
 <p>owner:<%= @poem.owner_id %></p>
-<p>genre:<%= @poem.genres_id %></p>
+<p>genre:<%= @poem.genre_id %></p>
 <p><%= button_to "edit", :action => "new" %></p>
-<p><% if @poem.users_id == @poem.owner_id then %>
+<p><% if @poem.user_id == @poem.owner_id then %>
 <%= button_to "watch pull request", :action => "merge" %>
 <% end %>
 </p>
