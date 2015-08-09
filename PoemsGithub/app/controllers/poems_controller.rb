@@ -12,9 +12,9 @@ class PoemsController < ApplicationController
   end
 
   def show
-    @poem = Poem.where(:id => params[:id])
+    @poem = Poem.where(:id => params[:id]).first
   end
-  
+
   def merge
   end
 end
