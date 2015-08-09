@@ -19,6 +19,11 @@ class PoemsController < ApplicationController
 
   def show
     @poem = Poem.where(:id => params[:id]).first
+    @poem_logs = Poem.where(:title => @poem.title)
+    @versions = @poem_logs.order("created_at desc").pluck(:created_at)
+    if params[:created_at]
+      @poem = @poem_logs.where(:created_at => params[:created_at]).first
+    end
   end
 
   def merge
