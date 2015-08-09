@@ -1,5 +1,5 @@
 class Poem < ActiveRecord::Base
-  belong_to :owners
-  belong_to :genres
+  belongs_to :owner
+  belongs_to :genre
   has_many :stars
 end
