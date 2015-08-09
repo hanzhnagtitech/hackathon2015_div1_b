@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <a href="/new">新規作成</a><br><br>
 
 <%= form_tag('/', :method => :get) do %>
@@ -24,3 +25,24 @@
   <% end %>
   </tbody>
 </table>
+=======
+  <table>
+      <thead>
+        <tr>
+          <td>ジャンル</td>
+          <td>タイトル</td>
+          <td>スター数</td>
+          <td>コミット数</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% @poems.each do |poem| %>
+        <tr>
+          <td><%= poem.genre.name unless poem.genre.nil? %></td>
+          <td><%= poem.title %></td>
+          <td>1</td>
+          <td>1</td>
+      <% end %>
+      </tbody>
+  </table>
+>>>>>>> 6081a2d0a455d66642c999fff017b635ba79bd3b

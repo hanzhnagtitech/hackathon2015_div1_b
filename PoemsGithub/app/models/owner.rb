@@ -1,4 +1,4 @@
 class Owner < ActiveRecord::Base
-  belong_to :users
-  belong_to :poems
+  belongs_to :users
+  belongs_to :poems
 end

@@ -1,6 +1,11 @@
+<%= form_for @poem do |f| %>
 <h1>Poem#new</h1>
 <p>title</p>
-<%= text_field :page, :name %>
+<%= f.text_field :title %>
 <p>genre</p>
 <p>content</p>
-<%= text_field :page, :name %>
+<%= f.text_field :content %>
+<p>
+<%= f.submit %>
+</p>
+<% end %>

@@ -1,6 +1,12 @@
 class PoemsController < ApplicationController
 
   def new
+    @poem = Poem.new
+  end
+
+  def create
+    @poem = Poem.new( {:title => params[:poem][:title], :content => params[:poem][:content]} )
+    @poem.save
   end
 
   def index
