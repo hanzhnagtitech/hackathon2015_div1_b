@@ -34,9 +34,12 @@ require 'time'
     @poem = Poem.where(:id => params[:id]).first
     @poem_logs = Poem.where(:title => @poem.title)
     @user = User.where(:id => @poem.owner_id).first
+    @commiter = User.where(:id => @poem.user_id).first
     @versions = @poem_logs.order("created_at desc").pluck(:created_at)
     if params[:poem]
       @poem = @poem_logs.where(:id => params[:poem][:id]).first
+      @user = User.where(:id => @poem.owner_id).first
+      @commiter = User.where(:id => @poem.user_id).first
     end
   end
 
