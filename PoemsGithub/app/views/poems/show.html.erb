@@ -1,7 +1,7 @@
 <h1>Poem#show</h1>
 
-<%= form_tag('/', :method => :get) do %>
-  <%= select_tag(:created_at, options_for_select(@versions, :selected => params[:created_at])) %>
+<%= form_tag('', :method => :get) do %>
+  <%= collection_select(:poem, :id, @poem_logs, :id, :created_at) %>
   <%= submit_tag '表示', {:name => nil } %>
 <% end %>
 
