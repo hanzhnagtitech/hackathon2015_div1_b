@@ -10,6 +10,8 @@
     <%= f.text_field :title %>
     <p>genre</p>
     <%= f.collection_select :genre_id, @genres, :id, :name %>
+    <p>content</p>
+    <%= f.text_field :content %>
   <% else %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :owner_id, :value => @old_poem.owner_id %>
@@ -18,10 +20,14 @@
     <%= f.hidden_field :is_selected, :value => false %>
     <%= f.hidden_field :title, :value => @old_poem.title %>
     <%= f.hidden_field :genre_id, :value => @old_poem.genre_id %>
+    <p>title</p>
+    <%= @old_poem.title %>
+    <p>genre</p>
+    <%= @old_poem.genre.name %>
+    <p>content</p>
+    <%= f.text_field :content, :value => @old_poem.content %>
   <% end %>
 
-  <p>content</p>
-  <%= f.text_field :content %>
   <p>
   <%= f.submit %>
   </p>
