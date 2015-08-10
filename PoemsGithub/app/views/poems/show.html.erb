@@ -5,16 +5,18 @@
   <%= submit_tag '表示', {:name => nil } %>
 <% end %>
 
-<p>Title:<%= @poem.title %></p>
-<p>Content:<%= @poem.content %></p>
-<p>owner:<%= @poem.owner_id %></p>
-<p>genre:<%= @poem.genre.name unless @poem.genre.nil? %></p>
-<input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
-<p><% if @poem.user_id == @poem.owner_id then %>
-<%= button_to "watch pull request", {:action => "merge", id: @poem.id} %>
+<p>タイトル:<%= @poem.title %></p>
+<p>本文:<%= @poem.content %></p>
+<p>オーナー:<%= @user.email %></p>
+<p>編集者:<%= @commiter.email %></p>
+<p>ジャンル:<%= @poem.genre.name %></p>
+
+<% if @poem.is_active == true %>
+  <input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
 <% end %>
 
 <p>
   <% if current_user.id == @poem.owner_id then %>
+    <%= button_to "プルリクエストを見る", :action => "merge" %>
   <% end %>
 </p>
