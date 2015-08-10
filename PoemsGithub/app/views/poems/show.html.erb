@@ -1,7 +1,7 @@
 <h1>Poem#show</h1>
 
-<%= form_tag('/', :method => :get) do %>
-  <%= select_tag(:created_at, options_for_select(@versions, :selected => params[:created_at])) %>
+<%= form_tag('', :method => :get) do %>
+  <%= collection_select(:poem, :id, @poem_logs, :id, :created_at) %>
   <%= submit_tag '表示', {:name => nil } %>
 <% end %>
 
@@ -10,6 +10,7 @@
 <p>owner:<%= @poem.owner_id %></p>
 <p>genre:<%= @poem.genre.name unless @poem.genre.nil? %></p>
 <input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
+<input type="button", "value="star">
 <p><% if @poem.user_id == @poem.owner_id then %>
 <%= button_to "watch pull request", :action => "merge" %>
 <% end %>

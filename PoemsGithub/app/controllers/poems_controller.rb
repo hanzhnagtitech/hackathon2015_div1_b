@@ -1,4 +1,5 @@
 class PoemsController < ApplicationController
+require 'time'
 
   def new
     @is_edit = params[:is_edit].to_s
@@ -31,13 +32,16 @@ class PoemsController < ApplicationController
 
   def show
     @poem = Poem.where(:id => params[:id]).first
-    @poem_logs = Poem.where(:title => @poem.title)
+    @poem_logs = Poem.where(:title => @poem.title, :is_wait => true)
+    @user = User.where(:id => @poem.owner_id).first
     @versions = @poem_logs.order("created_at desc").pluck(:created_at)
-    if params[:created_at]
-      @poem = @poem_logs.where(:created_at => params[:created_at]).first
+    if params[:poem]
+      @poem = @poem_logs.where(:id => params[:poem][:id]).first
     end
   end
 
   def merge
+    @poem = Poem.where(:id => params[:id]).first
+    @poem_logs = Poem.where(:title => @poem.title, :is_wait => true)
   end
 end
