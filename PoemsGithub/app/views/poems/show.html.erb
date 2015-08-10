@@ -10,7 +10,7 @@
 <p>オーナー:<%= @user.email %></p>
 <p>ジャンル:<%= @poem.genre.name %></p>
 <input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
-<p><% if @poem.user_id == @poem.owner_id then %>
+<p><% if current_user.id == @poem.owner_id then %>
 <%= button_to "プルリクエストを見る", :action => "merge" %>
 <% end %>
 </p>
