@@ -33,7 +33,7 @@ require 'time'
 
   def show
     @poem = Poem.where(:id => params[:id]).first
-    @poem_logs = Poem.where(:title => @poem.title, :is_wait => true)
+    @poem_logs = Poem.where(:title => @poem.title)
     @user = User.where(:id => @poem.owner_id).first
     @commiter = User.where(:id => @poem.user_id).first
     @versions = @poem_logs.order("created_at desc").pluck(:created_at)
@@ -54,6 +54,6 @@ require 'time'
     poem.is_selected = true
     poem.save
   #  redirect_to action: 'show', id: poem.id
-    redirect_to("/poems/"+poem.id.to_s) 
+    redirect_to("/poems/"+poem.id.to_s)
   end
 end
