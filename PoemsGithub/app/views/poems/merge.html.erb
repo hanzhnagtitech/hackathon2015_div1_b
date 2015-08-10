@@ -3,5 +3,6 @@
 <% @poem_logs.each do |poem| %>
   <p>Title:<%= @poem.title %></p>
   <p>Content:<%= @poem.content %></p>
-  <input type="button" onclick="location.href='/poems/new?is_edit=1&poem_id=<%= @poem.id %>'"value="edit">
+  <!--  <input type="button" onclick="location.href='/poems/<%= @poem.id %>/show/ %>'"value="merge"> -->
+  <%= link_to "merge", poems_merge_path(@poem.id) %>
 <% end %>
