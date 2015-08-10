@@ -14,4 +14,8 @@
 <p><% if @poem.user_id == @poem.owner_id then %>
 <%= button_to "watch pull request", {:action => "merge", id: @poem.id} %>
 <% end %>
+
+<p>
+  <% if current_user.id == @poem.owner_id then %>
+  <% end %>
 </p>
