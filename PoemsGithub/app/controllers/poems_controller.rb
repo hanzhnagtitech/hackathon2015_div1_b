@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
 require 'time'
+# before_action :update_merge
 
   def new
     @is_edit = params[:is_edit].to_s
@@ -32,7 +33,7 @@ require 'time'
 
   def show
     @poem = Poem.where(:id => params[:id]).first
-    @poem_logs = Poem.where(:title => @poem.title)
+    @poem_logs = Poem.where(:title => @poem.title, :is_wait => true)
     @user = User.where(:id => @poem.owner_id).first
     @commiter = User.where(:id => @poem.user_id).first
     @versions = @poem_logs.order("created_at desc").pluck(:created_at)
@@ -44,5 +45,15 @@ require 'time'
   end
 
   def merge
+    @poem = Poem.where(:id => params[:id]).first
+    @poem_logs = Poem.where(:title => @poem.title, :is_wait => true)
+  end
+
+  def update_merge
+    poem = Poem.where(:id => params[:id]).first
+    poem.is_selected = true
+    poem.save
+  #  redirect_to action: 'show', id: poem.id
+    redirect_to("/poems/"+poem.id.to_s) 
   end
 end

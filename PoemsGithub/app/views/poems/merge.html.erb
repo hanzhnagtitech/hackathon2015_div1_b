@@ -1,0 +1,8 @@
+<h1>Poem#merge</h1>
+
+<% @poem_logs.each do |poem| %>
+  <p>Title:<%= @poem.title %></p>
+  <p>Content:<%= @poem.content %></p>
+  <!--  <input type="button" onclick="location.href='/poems/<%= @poem.id %>/show/ %>'"value="merge"> -->
+  <%= link_to "merge", poems_merge_path(@poem.id) %>
+<% end %>
